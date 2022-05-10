@@ -7,8 +7,12 @@ import random
 
 
 def biz_test_async(argv):
-    argv_json = json.loads(argv)
-    argv_msg = argv_json['msg']
+    try:
+        argv_json = json.loads(argv)
+        argv_msg = argv_json['msg']
+    except Exception as e:
+        print(e)
+        argv_msg = argv
     return test_async(argv_msg)
 
 
