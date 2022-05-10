@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-#
 
 import json
-
-
-def biz_test_async(argv):
-    argv_json = json.dumps(argv)
-    argv_msg = argv_json['msg']
-    return test_async(argv_msg)
-
-
 import requests
 import time
 import random
+
+
+def biz_test_async(argv):
+    argv_json = json.loads(argv)
+    argv_msg = argv_json['msg']
+    return test_async(argv_msg)
 
 
 def test_async(msg):
@@ -34,3 +32,7 @@ def test_async(msg):
         res_msg = '发送失败回调'
 
     return (success, '测试异步发QQ消息方法：%s，%s' % (msg, res_msg))
+
+
+if __name__ == '__main__':
+    biz_test_async('{"msg": "test"}')
